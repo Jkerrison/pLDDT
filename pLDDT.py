@@ -3,10 +3,10 @@ from pymol import cmd
 
 def pLDDT(selection="all"):
 
-    cmd.color("0x0053D6", f"({selection}) and b > 0.9")
-    cmd.color("0x65CBF3", f"({selection}) and b < 0.89999 and b > 0.7")
-    cmd.color("0xFFDB13", f"({selection}) and b < 0.69999 and b >= 0.5")
-    cmd.color("pink", f"({selection}) and b < 0.49999")
+    cmd.color("0x0053D6", f"({selection}) and b > 0.900")
+    cmd.color("0x65CBF3", f"({selection}) and b < 0.899 and b > 0.700")
+    cmd.color("0xFFDB13", f"({selection}) and b < 0.699 and b >= 0.500")
+    cmd.color("pink", f"({selection}) and b < 0.499")
     
 #0xFF7D45
 
