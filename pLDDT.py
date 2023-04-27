@@ -1,7 +1,7 @@
 from pymol import cmd
 
 
-def esmpLDDT(selection="all"):
+def esmpLDDT(selection="residue"):
 
     cmd.color("0x0053D6", f"({selection}) and b > 0.9")
     #cmd.color("red", f"({selection}) and b = 0.9")
