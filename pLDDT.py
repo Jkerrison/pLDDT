@@ -12,7 +12,7 @@ def esm_pLDDT(selection="atom"):
     
 
 cmd.extend("esm_pLDDT", esm_pLDDT)
-cmd.auto_arg[0]["esm_pLDDT"] = [cmd.object_sc, "object", ""]
+#cmd.auto_arg[0]["esm_pLDDT"] = [cmd.object_sc, "object", ""]
 
     
 def pLDDT(selection="atom"):
