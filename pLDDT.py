@@ -3,10 +3,10 @@ from pymol import cmd
 
 def esmpLDDT(selection="atom"):
 
-    cmd.color("0x0053D6", f"({selection}) and b > 0.9")
+    cmd.color("0x0053D6", f"({selection}) and b > 0.89")
     #cmd.color("red", f"({selection}) and b = 0.9")
-    cmd.color("0x65CBF3", f"({selection}) and b < 0.9 and b > 0.7")
-    cmd.color("0xFFDB13", f"({selection}) and b < 0.7 and b > 0.5")
+    cmd.color("0x65CBF3", f"({selection}) and b < 0.9 and b > 0.69")
+    cmd.color("0xFFDB13", f"({selection}) and b < 0.7 and b > 0.49")
     cmd.color("0xFF7D45", f"({selection}) and b < 0.5")
     
 
