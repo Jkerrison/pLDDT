@@ -12,7 +12,7 @@ def esmpLDDT(selection="atom"):
 
 cmd.extend("esmpLDDT", esmpLDDT)
 cmd.auto_arg[0]["esmpLDDT"] = [cmd.object_sc, "object", ""]
-print(cmd.auto_arg[0]["esmpLDDT"] = [cmd.object_sc, "object", ""])
+
     
 def afpLDDT(selection="all"):
 
