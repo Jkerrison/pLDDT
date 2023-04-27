@@ -1,7 +1,7 @@
 from pymol import cmd
 
 
-def pLDDT(selection="all"):
+def pLDDT(selection="atoms"):
 
     cmd.color("0x0053D6", f"({selection}) and b => 0.9")
     cmd.color("0x65CBF3", f"({selection}) and b < 0.9 and b => 0.7")
