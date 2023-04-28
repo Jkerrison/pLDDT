@@ -49,7 +49,7 @@ for i in list_of_files:
     plt.xlabel('ResNo', fontsize=12)
     plt.ylabel('pLDDT', fontsize=12)
 
-    ax.set_ylim(50,100)
+    ax.set_ylim(0,100)
     ax.set_xlim(0,len(x)+1)
 
     ax.spines['top'].set_visible(False)
