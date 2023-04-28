@@ -3,11 +3,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.colors as colors
 import glob
+import random
 
-#st = gemmi.read_structure('/Users/jkerrison/Dropbox/XHPi/XH-Pi_SHIRT/best_structures_plddt_90/A0A0B4RZP0_98-191_relaxed_rank_1_model_2.pdb')
 
-list_of_files = (glob.glob("/Users/jkerrison/Dropbox/XHPi/XH-Pi_SHIRT/best_structures_plddt_90/*.pdb"))
+
+directory = "/Users/jkerrison/Dropbox/XHPi/XH-Pi_SHIRT/best_structures_plddt_90/"
+list_of_files = (glob.glob(f"{directory}*.pdb"))
 list_of_files = [val for val in list_of_files if not val.endswith("_H.pdb")]
+#list_of_files = list_of_files[0]
+list_of_files=(random.sample(list_of_files, 3))
 
 for i in list_of_files:
     st = gemmi.read_structure(i)
@@ -22,7 +26,7 @@ for i in list_of_files:
     for res in polymer:
         modelled_res_list.append(res.name)
         res_av_b = []
-        for atom in res:     
+        for atom in res:    
             res_av_b.append(atom.b_iso)
         atom_b_mean=np.mean(res_av_b)  
         pLDDT_per_res.append(atom_b_mean)
@@ -45,7 +49,7 @@ for i in list_of_files:
     cbar.set_ticks([0, 25, 50, 75, 100])
     cbar.set_ticklabels(['0', '25', '50', '75', '100'])
 
-    plt.title(f'{st.name}', fontsize=16)
+    plt.title(f'{st.name}', fontsize=12)
     plt.xlabel('ResNo', fontsize=12)
     plt.ylabel('pLDDT', fontsize=12)
 
@@ -55,4 +59,5 @@ for i in list_of_files:
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
 
-    plt.show()
+    #plt.show()
+    plt.savefig(f'{directory}{st.name}.pdf')
