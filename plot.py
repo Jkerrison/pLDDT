@@ -39,7 +39,7 @@ for i in list_of_files:
 
     ax.plot(x, y, color='black')
 
-    sc = ax.scatter(x, y, c=y, cmap=cmap, vmin=50, vmax=100)
+    sc = ax.scatter(x, y, c=y, cmap=cmap, vmin=0, vmax=100)
 
     cbar = plt.colorbar(sc, ax=ax)
     cbar.set_ticks([0, 25, 50, 75, 100])
@@ -49,7 +49,7 @@ for i in list_of_files:
     plt.xlabel('ResNo', fontsize=12)
     plt.ylabel('pLDDT', fontsize=12)
 
-    ax.set_ylim(0,100)
+    ax.set_ylim(50,100)
     ax.set_xlim(0,len(x)+1)
 
     ax.spines['top'].set_visible(False)
