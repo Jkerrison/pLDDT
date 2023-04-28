@@ -7,7 +7,7 @@ import random
 
 
 
-directory = "/Users/jkerrison/Dropbox/XHPi/XH-Pi_SHIRT/best_structures_plddt_90/"
+directory = "/path/to/files/"
 list_of_files = (glob.glob(f"{directory}*.pdb"))
 list_of_files = [val for val in list_of_files if not val.endswith("_H.pdb")]
 #list_of_files = list_of_files[0]
