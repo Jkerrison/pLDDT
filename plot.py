@@ -5,11 +5,22 @@ import numpy as np
 import requests
 import os
 import scipy as sp
-import scipy.interpolate
+#import scipy.interpolate
 import os.path
+import glob
 
 
 def structure(model):
+    model = gemmi.read_structure(model)[0]
+    chain = model[0]
+    polymer = chain.get_polymer()
+    polymer = chain.get_polymer()
+    seq = [res.name for res in polymer]
+    seq = gemmi.one_letter_code(seq)
+    print(seq)
+    return(polymer,seq)
+
+def esmstructure(model):
     st = gemmi.read_structure(model)
     chain = st[0]['A']
     polymer = chain.get_polymer()
@@ -17,8 +28,7 @@ def structure(model):
     ent = st.entities[0]
     seq = gemmi.one_letter_code(ent.full_sequence)
     polymer = chain.get_polymer()
-    
-    return(polymer,seq,entity,st.name)
+    return(polymer,seq)
 
 def ESMfold(sequence='i'):
     headers = {
@@ -82,15 +92,18 @@ def plot(x, y, x2=None, y2=None, color2='red'):
     return
 
 
-
-
 directory = os.getcwd()
-Alphafold = 'AF-L8XZM1-F1-model_v4.pdb'
-af_poly, seq, af_entity, name = structure(Alphafold) 
-if os.path.isfile(f'{Alphafold[:-4]}_ESMfold.pdb') == False:
-    ESMfold(seq)
-esm_poly, seq, esm_entity, name = structure(f'{Alphafold[:-4]}_ESMfold.pdb') 
-x,y = pLDDT(af_poly)
-x2,y2 = pLDDT(esm_poly)
-plot(x,y,x2,y2)
-#plot(x,y)
+list_of_files = (glob.glob(f"{directory}/*.pdb"))
+list_of_files = [val for val in list_of_files if not val.endswith("_H.pdb")]
+list_of_files = [val for val in list_of_files if not val.endswith("ESMfold.pdb")]
+
+for i in list_of_files:
+    Alphafold = i
+    af_poly, seq = structure(Alphafold) 
+    if os.path.isfile(f'{Alphafold[:-4]}_ESMfold.pdb') == False:
+        ESMfold(seq)
+    esm_poly, seq = esmstructure(f'{Alphafold[:-4]}_ESMfold.pdb') 
+    x,y = pLDDT(af_poly)
+    x2,y2 = pLDDT(esm_poly)
+    plot(x,y,x2,y2)
+    #plot(x,y)
