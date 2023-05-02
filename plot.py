@@ -4,6 +4,10 @@ import matplotlib.colors as colors
 import numpy as np
 import requests
 import os
+import scipy as sp
+import scipy.interpolate
+import os.path
+
 
 def structure(model):
     st = gemmi.read_structure(model)
@@ -23,7 +27,7 @@ def ESMfold(sequence='i'):
     response = requests.post('https://api.esmatlas.com/foldSequence/v1/pdb/', headers=headers, data=sequence)
     name = sequence[:3] + sequence[-3:]
     pdb_string = response.content.decode('utf-8')
-    with open('ESMfold.pdb', 'w') as f:
+    with open(f'{Alphafold[:-4]}_ESMfold.pdb', 'w') as f:
         f.write(pdb_string)
 
 def pLDDT(polymer):
@@ -42,16 +46,25 @@ def pLDDT(polymer):
         pLDDT_per_res = [i*100 for i in pLDDT_per_res]
     return(modelled_res_list,pLDDT_per_res)
 
-def plot(x, y, x2=None, y2=None, color2='grey'):
+def plot(x, y, x2=None, y2=None, color2='red'):
+    new_length = len(x)*100
+    x_new = np.linspace(min(x), max(x), new_length)
+    y_new = sp.interpolate.interp1d(x, y, kind='cubic')(x_new)
+    
+
     color_list = [(0, '#FF7D45'), (0.45, '#FF7D45'), (0.55, '#FFDB13'), (0.65, '#FFDB13'), (0.75, '#65CBF3'), (0.85, '#65CBF3'), (0.95, '#0053D6'), (1, '#0053D6')]
     cmap = colors.LinearSegmentedColormap.from_list('my_colormap', color_list)
-    fig, ax = plt.subplots()
-    ax.plot(x, y, color='black',label='Alphafold')
+    fig, ax = plt.subplots(figsize=(8,4))
+    ax.plot(x_new, y_new, color='black',label='Alphafold',linewidth=0.75,alpha=0.5)
+    sc = ax.scatter(x_new, y_new, c=y_new, cmap=cmap, vmin=0, vmax=100,s=2)
     if x2 and y2:
-        ax.plot(x2, y2, color=color2,alpha=0.3,label='ESMfold')
-        sc = ax.scatter(x2, y2, c=y2, cmap=cmap, vmin=0, vmax=100,s=15,alpha=0.3)
+        x2_new = np.linspace(min(x2), max(x2), new_length)
+        y2_new = sp.interpolate.interp1d(x2, y2, kind='cubic')(x2_new)
+        ax.plot(x2_new, y2_new, color=color2,alpha=0.2,linewidth=0.75,label='ESMfold')
+        #sc = ax.scatter(x2_new, y2_new, c=y2_new, cmap=cmap, vmin=0, vmax=100,s=1,alpha=0.1)
         plt.legend(loc='lower left')
-    sc = ax.scatter(x, y, c=y, cmap=cmap, vmin=0, vmax=100)
+    
+    
     cbar = plt.colorbar(sc, ax=ax)
     cbar.set_ticks([0, 25, 50, 75, 100])
     cbar.set_ticklabels(['0', '25', '50', '75', '100'])
@@ -74,12 +87,10 @@ def plot(x, y, x2=None, y2=None, color2='grey'):
 directory = os.getcwd()
 Alphafold = 'AF-L8XZM1-F1-model_v4.pdb'
 af_poly, seq, af_entity, name = structure(Alphafold) 
-ESMfold(seq)
-esm_poly, seq, esm_entity, name = structure('ESMfold.pdb') 
+if os.path.isfile(f'{Alphafold[:-4]}_ESMfold.pdb') == False:
+    ESMfold(seq)
+esm_poly, seq, esm_entity, name = structure(f'{Alphafold[:-4]}_ESMfold.pdb') 
 x,y = pLDDT(af_poly)
 x2,y2 = pLDDT(esm_poly)
 plot(x,y,x2,y2)
 #plot(x,y)
-
-
-# sequence has two sets of
