@@ -1,6 +1,6 @@
 from pymol import cmd
 
-def pLDDT(selection="atom"):
+def pLDDT(selection="cartoon"): #atom
 
     cmd.color("0x0053D6", f"({selection}) and b > 89.9 or b < 1 and b > 0.89")
     cmd.color("0x65CBF3", f"({selection}) and b < 90 and b > 70")
