@@ -13,3 +13,11 @@ def pLDDT(selection="cartoon"): #atom
     
 cmd.extend("pLDDT", pLDDT)
 cmd.auto_arg[0]["pLDDT"] = [cmd.object_sc, "object", ""]
+
+
+def bFactor(selection="cartoon"): #atom
+
+    cmd.color("0x0053D6", f"({selection}) and b < 11.96")  #Dark Blue
+    cmd.color("0x65CBF3", f"({selection}) and b > 11.96 and b < 59.22")
+    cmd.color("0xFFDB13", f"({selection}) and b > 59.22 and b < 293.31")
+    cmd.color("0xFF7D45", f"({selection}) and b > 293.31")
