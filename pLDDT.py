@@ -21,3 +21,6 @@ def bFactor(selection="cartoon"): #atom
     cmd.color("0x65CBF3", f"({selection}) and b > 11.96 and b < 59.22")
     cmd.color("0xFFDB13", f"({selection}) and b > 59.22 and b < 293.31")
     cmd.color("0xFF7D45", f"({selection}) and b > 293.31")
+
+cmd.extend("bFactor", bFactor)
+cmd.auto_arg[0]["bFactor"] = [cmd.object_sc, "object", ""]
