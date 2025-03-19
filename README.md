@@ -6,7 +6,8 @@ Forked from **cbalbin-bio / pymol-color-alphafold**, modified to use Colours mat
 ### Run in Pymol command line or add to pymolrc file
 run https://raw.githubusercontent.com/Jkerrison/pLDDT/master/pLDDT.py
 
-pLDDT {protein}
+load Protein.pdb
+```pLDDT {Protein}```
 
 ---
 
@@ -14,5 +15,8 @@ pLDDT {protein}
 
 ### Run in Pymol command line or add to pymolrc file
 run https://raw.githubusercontent.com/Jkerrison/pLDDT/refs/heads/main/conservation_score.py
+
+load Protein.pdb
+```conservation('/path/to/aln.fa','Protein') ```
 
 ---
