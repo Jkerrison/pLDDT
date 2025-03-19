@@ -19,6 +19,6 @@ run https://raw.githubusercontent.com/Jkerrison/pLDDT/refs/heads/main/conservati
 load Protein.pdb
 ```conservation('/path/to/aln.fa','Protein') ```
 
-![alt text]([http://url/to/img.png](https://github.com/Jkerrison/pLDDT/blob/main/conservation.png))
+![alt text]([http://url/to/img.png](https://github.com/Jkerrison/pLDDT/blob/main/conservation.png)raw=true)
 
 ---
