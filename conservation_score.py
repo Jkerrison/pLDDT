@@ -47,8 +47,8 @@ def interpolate_color(percentage):
         b = int(255 * (1 - ratio))
     else:
         ratio = percentage / 50
-        r = int(255 * (1 - ratio))
-        g = int(255 * (1 - ratio))
+        r = int(255 * ratio)
+        g = int(255 * ratio)
         b = int(255)
     
     return f"0x{r:02x}{g:02x}{b:02x}"
@@ -76,3 +76,4 @@ def conservation(alignment_file, selection="all"):
 
 cmd.extend("conservation", conservation)
 cmd.auto_arg[0]["conservation"] = [cmd.object_sc, "object", ""]
+
