@@ -1,5 +1,7 @@
-# pLDDT
-
+# JK PyMol scripts
+---
+![image alt](https://github.com/Jkerrison/pLDDT/blob/main/pymolrc.png?raw=true)
+---
 ## pLDDT.py
 Forked from **cbalbin-bio / pymol-color-alphafold**, modified to use Colours matching Alphafold database and Work with ESMfold Models 
 
