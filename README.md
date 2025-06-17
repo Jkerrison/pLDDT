@@ -1,5 +1,5 @@
 # JK PyMol scripts
-
+File > Edit pymolrc
 ![image alt](https://github.com/Jkerrison/pLDDT/blob/main/pymolrc.png?raw=true)
 ---
 ## pLDDT.py
