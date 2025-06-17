@@ -9,7 +9,7 @@ run https://raw.githubusercontent.com/Jkerrison/pLDDT/master/pLDDT.py
 load Protein.pdb
 ```pLDDT {Protein}```
 
-![image alt](https://github.com/Jkerrison/pLDDT/blob/main/pLDDT.pdf?raw=true)
+![image alt](https://github.com/Jkerrison/pLDDT/blob/main/pLDDT_protein.png?raw=true)
 ![image alt](https://github.com/Jkerrison/pLDDT/blob/main/pLDDT.png?raw=true)
 ---
 
