@@ -21,6 +21,7 @@ To make the alignment file go to: [MSA](https://www.ebi.ac.uk/jdispatcher/msa/cl
 
 In parameters select:
 Output Format - Pearson/FASTA
+
 Order - Input
 
 ### Run in Pymol command line or add to pymolrc file
