@@ -17,6 +17,11 @@ load Protein.pdb
 
 # Conservation
 
+To make the alignment file goto: https://www.ebi.ac.uk/jdispatcher/msa/clustalo?outfmt=fa&order=input
+In parameters select:
+Output Format - Pearson/FASTA
+Order - Input
+
 ### Run in Pymol command line or add to pymolrc file
 run https://raw.githubusercontent.com/Jkerrison/pLDDT/refs/heads/main/conservation_score.py
 
