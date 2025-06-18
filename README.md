@@ -17,7 +17,7 @@ load Protein.pdb
 
 # Conservation
 
-To make the alignment file goto: [MSA](https://www.ebi.ac.uk/jdispatcher/msa/clustalo?outfmt=fa&order=input)
+To make the alignment file go to: [MSA](https://www.ebi.ac.uk/jdispatcher/msa/clustalo?outfmt=fa&order=input)
 
 In parameters select:
 Output Format - Pearson/FASTA
